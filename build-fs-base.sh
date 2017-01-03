@@ -7,12 +7,12 @@ ARCH="armhf"
 
 if [ ! $BOARDNAME ]; then
 	BOARDNAME="rk3288"
-	echo -e "\033[1m\033[34m -------- Boardname is: $BOARDNAME -------- \033[0m"
 fi
+	echo -e "\033[1m\033[34m -------- Boardname is: $BOARDNAME -------- \033[0m"
 if [ ! $USERNAME ]; then
 	USERNAME="cqutprint"
-	echo -e "\033[1m\033[34m -------- USERNAME is: $USERNAME -------- \033[0m"
 fi
+	echo -e "\033[1m\033[34m -------- USERNAME is: $USERNAME -------- \033[0m"
 
 # set ubuntu version
 if [ ! $ROOTFS_VERSION ]; then
@@ -65,13 +65,16 @@ echo "XKBLAYOUT="us"" >> /etc/default/keyboard
 
 # install some base tools
 echo -e "\033[5m\033[34m -------- Install some base tools -------- \033[0m"
-apt install -y xfce4 net-tools iputils-ping wicd vim
+apt install -y xfce4 net-tools iputils-ping wicd vim xdg-utils
 
 # gstreamer base tools
 echo -e "\033[5m\033[34m -------- Install gstreamer base environment -------- \033[0m"
-apt install -y gstreamer1.0-alsa gstreamer1.0-nice gstreamer1.0-plugins-bad \
-gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-tools \
-gstreamer1.0-x gstreamer1.0-plugins-bad-faad
+apt install -y gstreamer1.0-alsa gstreamer1.0-libav gstreamer1.0-plugins-base \
+gstreamer1.0-plugins-good gstreamer1.0-plugins-bad-faad gstreamer1.0-x gstreamer1.0-tools\
+
+# install a media player based on gstreamer framework
+echo -e "\033[5m\033[34m -------- Install a gstreamer media player -------- \033[0m"
+apt install -y parole
 
 # transitional chinese support
 echo -e "\033[5m\033[34m -------- Add chinese support -------- \033[0m"
@@ -98,6 +101,7 @@ rm -rvf /usr/lib/arm-linux-gnueabihf/mesa-egl/*
 
 # libdrm
 echo -e "\033[5m\033[34m -------- Install libdrm-rockchip -------- \033[0m"
+dpkg -i ./prebuild/libdrm/libdrm2*_armhf.deb
 dpkg -i ./prebuild/libdrm/libdrm-rockchip*_armhf.deb
 
 # mpp
