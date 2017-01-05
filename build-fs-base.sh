@@ -65,7 +65,7 @@ echo "XKBLAYOUT="us"" >> /etc/default/keyboard
 
 # install some base tools
 echo -e "\033[5m\033[34m -------- Install some base tools -------- \033[0m"
-apt install -y xfce4 net-tools iputils-ping wicd vim xdg-utils
+apt install -y xfce4 net-tools iputils-ping vim xdg-utils
 
 # gstreamer base tools
 echo -e "\033[5m\033[34m -------- Install gstreamer base environment -------- \033[0m"
@@ -79,14 +79,6 @@ apt install -y parole
 # transitional chinese support
 echo -e "\033[5m\033[34m -------- Add chinese support -------- \033[0m"
 apt install -y fonts-wqy-microhei
-
-# cups and hp printer driver
-echo -e "\033[5m\033[34m -------- Add printer driver support -------- \033[0m"
-apt install -y cups hplip
-
-# Split screen tool
-echo -e "\033[5m\033[34m -------- Add a split screen tool -------- \033[0m"
-apt install -y devilspie
 
 # xserver
 echo -e "\033[5m\033[34m -------- Extract xserver to support 2D Accelerate -------- \033[0m"
